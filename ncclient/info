@@ -1,0 +1,26 @@
+We have up and running NXOS with mgmt ip address 192.168.178.142
+
+Must packages:
+(venv) $ sudo apt-get install -y python3-dev libxml2-dev libxslt1-dev
+libffi-dev libssl-dev zlib1g-dev python3-pip git python3-requests
+
+The ncclient (https://github.com/ncclient/ncclient) library is a Python
+library for NETCONF clients. We should also enable our virtual environment that we
+created in the last chapter, if not already. We will install ncclient from the GitHub
+repository so that we can install the latest version:
+(venv) $ git clone https://github.com/ncclient/ncclient
+(venv) $ cd ncclient/
+(venv) $ python setup.py install
+NX-API on Nexus devices is turned off by default, so we will need to turn it on.
+We can either use the user that is already created (if you are using VIRL auto-config),
+or create a new user for the NETCONF procedures:
+feature nxapi
+username cisco password 5 $1$Nk7ZkwH0$fyiRmMMfIheqE3BqvcL0C1 role
+network- operator
+username cisco role network-admin
+username cisco passphrase lifetime 99999 warntime 14 gracetime 3
+For our lab, we will turn on both HTTP and the sandbox configuration; keep in mind
+that they should be turned off in production:
+nx-osv-2(config)# nxapi http port 80
+nx-osv-2(config)# nxapi sandbox
+We are now ready to look at our first NX-API example.
