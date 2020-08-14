@@ -26,7 +26,7 @@ auth=(switchuser,switchpassword)).json()
 print(response)
 print(json.dumps(response, indent=2, sort_keys=True))  #printing json file
 
-with open("../output.txt", "w") as f:
+with open("output.txt", "w") as f:
   print("Output is being generated !!!")
   f.write(json.dumps(response, indent=2, sort_keys=True))
 f.close()
