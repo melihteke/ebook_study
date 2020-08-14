@@ -40,8 +40,8 @@ print("Now json data is being parsed  based on state")
 
 for i in range(1,128):
   #print("Creating VLAN " + str(n))
-  print("interface Ethernet1/" + str(i) )
-  print(read_json_var['result']['body']["TABLE_interface"]['ROW_interface'][i]['state'])
+  print("interface Ethernet1/" + str(i) + ":    " + read_json_var['result']['body']["TABLE_interface"]['ROW_interface'][i]['state'] )
+  #print(read_json_var['result']['body']["TABLE_interface"]['ROW_interface'][i]['state'])
 
 
 
