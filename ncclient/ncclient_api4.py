@@ -33,7 +33,12 @@ with open('output_interface.txt', 'w') as f:
 f.close()
 
 with open('output_interface.txt', 'r') as f:
-  read_json_var = json.load(f)
+  read_json_var = json.load(f)   #
+
+#'''Note regarding json.load vs json.loads
+#The json. load() is used to read the JSON document from file and The json. loads() is used to convert the JSON String document into the Python dictionary.
+#'''
+
 
 print("'\n'")
 print("Now json data is being parsed  based on state")
